@@ -8,6 +8,12 @@
               uses: actions/checkout@v4
             - name: Checkout Code   
               run: ls
+            - name: Setup Node
+              uses: actions/setup-node@v3
+              with:
+                node-version: '20.X'
+            - name: Install Dependices
+              run: npm ci
         # 0.checkout the code from the repo 
         # 1 Install the deps of our react application 
         # 2 exccute automated tests
