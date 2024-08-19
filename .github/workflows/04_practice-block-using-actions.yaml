@@ -1,5 +1,5 @@
 name: 04 - Using Actions
-on: push
+on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,6 +26,6 @@ jobs:
         
 
         # 0.checkout the code from the repos
-         
+
         # 1 Install the deps of our react application 
         # 2 exccute automated tests
