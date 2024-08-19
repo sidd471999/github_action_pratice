@@ -14,6 +14,7 @@
                 node-version: '20.X'
             - name: Install Dependices
               run: npm ci
+              working-directory: 04_practice-block-using-actions/react-app
         # 0.checkout the code from the repo 
         # 1 Install the deps of our react application 
         # 2 exccute automated tests
