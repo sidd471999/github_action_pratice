@@ -20,4 +20,4 @@ jobs:
           
       - name: Using variables (retrieve variable)
         run: |
-          echo "Variable Value: ${{vars.MY_VARS}}"
+          echo "Variable Value: ${{vars.MY_VAR}}"
