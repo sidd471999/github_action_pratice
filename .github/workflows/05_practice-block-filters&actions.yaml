@@ -3,7 +3,8 @@
   on: 
       pull_request:
        types: 
-         -closed
+         - closed
+  jobs:       
       echo:
         runs-on: ubuntu-latest
         steps:
