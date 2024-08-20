@@ -1,0 +1,12 @@
+  name: 05_practice-block-filters&actions
+
+  on: 
+      pull_request:
+       types: 
+         -opened
+         -synchronize 
+  jobs:
+      echo:
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo "running Whenever a PR is opened or synchronized And base branch is main"
