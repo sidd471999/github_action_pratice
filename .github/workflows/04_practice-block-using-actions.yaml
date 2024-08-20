@@ -29,3 +29,4 @@ jobs:
 
         # 1 Install the deps of our react application 
         # 2 exccute automated tests
+        #3  Report gene
