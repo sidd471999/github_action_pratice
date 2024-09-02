@@ -1,0 +1,55 @@
+name: 10-Exceution-Flow-controlling
+
+on:
+    workflow_dispatch:
+        inputs:
+            pass_unit_test:
+                type: boolean
+                description: This will determine wheater unit test will pass or not 
+                default: true
+
+jobs:
+    lintbuild:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Lint AND Build
+              run: echo "Liniting and buliding project"
+    unittest:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run Unit test
+              run: echo "run Unit tests..."
+            - name: Failing Test
+              if: ${{ !inputs.pass_unit_test }} 
+              run : exit 1
+
+    deploynonprod:
+        runs-on: ubuntu-latest
+        needs: 
+            - lintbuild
+            - unittest
+        steps: 
+            - name: deploying non Prod
+              run: echo "Deploy Non Prod"
+    e2etests:
+        runs-on: ubuntu-latest
+        needs: 
+            - deploynonprod
+        steps: 
+            - name: Running e2e test
+              run: echo "Running E2E tests"
+    Load_tests:
+        runs-on: Running Load test
+        needs: 
+            - deploynonprod
+        steps: 
+            - name: Running load tests 
+              run: echo "Running load tests"          
+    deployprod:
+        runs-on: ubuntu-latest                        
+        needs: 
+            - e2etests
+            - Load_tests
+        steps: 
+            - name: Deploying on prod
+              run: echo "Deploying on prod"  
