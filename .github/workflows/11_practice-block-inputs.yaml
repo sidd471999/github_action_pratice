@@ -1,4 +1,4 @@
-name: Using Inputs in GitHub Actions
+name: 11_Using Inputs in GitHub Actions
 
 on: 
   workflow_dispatch:
