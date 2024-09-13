@@ -14,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      build-status: ${{ steps.set_output.outputs.status }}  # Corrected the output reference
+      build-status: ${{ steps.set_output.outputs.status }}  # Corrected output reference
     steps:
       - name: Print GITHUB_OUTPUT
         run: echo $GITHUB_OUTPUT
@@ -23,12 +23,12 @@ jobs:
         run: echo "status=${{ inputs['build-status'] }}" >> "$GITHUB_OUTPUT"
       - name: Set build status output
         id: set_output
-        run: echo "status=${{ inputs['build-status'] }}" >> $GITHUB_ENV  # Correct output method
+        run: echo "status=${{ inputs['build-status'] }}" >> $GITHUB_OUTPUT  # Correct output method
 
   deploy:
     runs-on: ubuntu-latest
     needs: build  # Ensures that the deploy job runs after the build job
     steps:
       - name: Deploy
-        if: ${{ needs.build.outputs['build-status'] == 'success' }}
-        run: echo "Deployment triggered"
+        if: ${{ needs.build.outputs['build-status'] == 'success' }}  # Ensure correct condition for success
+        run: echo "Deployment triggered for success"
